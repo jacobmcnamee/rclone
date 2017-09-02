@@ -402,6 +402,14 @@ Normally rclone would skip any files that have the same
 modification time and are the same size (or have the same checksum if
 using `--checksum`).
 
+### --immutable ###
+
+Treat source and destination files as immutable and disallow
+modification.  Fail if existing files have been modified.
+
+This can be useful as an additional layer of protection for
+immutable or append-only data sets.
+
 ### --log-file=FILE ###
 
 Log all of rclone's output to FILE.  This is not active by default.

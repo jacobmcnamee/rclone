@@ -98,6 +98,7 @@ var (
 	useListR        = BoolP("fast-list", "", false, "Use recursive list if available. Uses more memory but fewer transactions.")
 	tpsLimit        = Float64P("tpslimit", "", 0, "Limit HTTP transactions per second to this.")
 	tpsLimitBurst   = IntP("tpslimit-burst", "", 1, "Max burst of transactions for --tpslimit.")
+	immutable       = BoolP("immutable", "", false, "Do not modify files. Fail if existing files have been modified.")
 	logLevel        = LogLevelNotice
 	statsLogLevel   = LogLevelInfo
 	bwLimit         BwTimetable
@@ -232,6 +233,7 @@ type ConfigInfo struct {
 	BufferSize         SizeSuffix
 	TPSLimit           float64
 	TPSLimitBurst      int
+	Immutable          bool
 }
 
 // Return the path to the configuration file
@@ -370,6 +372,7 @@ func LoadConfig() {
 	Config.UseListR = *useListR
 	Config.TPSLimit = *tpsLimit
 	Config.TPSLimitBurst = *tpsLimitBurst
+	Config.Immutable = *immutable
 	Config.BufferSize = bufferSize
 
 	ConfigPath = *configFile
